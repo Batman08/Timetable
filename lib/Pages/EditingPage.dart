@@ -32,7 +32,7 @@ class EditingPageState extends State<EditingPage>{
           ),
           new Padding(padding: new EdgeInsets.only(top: 20.0)),
           new RaisedButton(
-            child: new Text("Add Period, Subject -- This bit is not, wait it actuall is, but it's not!!!!! for testing"),
+            child: new Text("Add Period, Subject -- This bit is for testing"),
             onPressed: () => null,
             colorBrightness: Brightness.dark,
           )
