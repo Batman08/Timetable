@@ -2,72 +2,103 @@ import 'package:flutter/material.dart';
 
 import '../UI/DayButtons.dart';
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   @override
   State createState() => new HomePageState();
 }
 
-class HomePageState extends State<HomePage>{
+class HomePageState extends State<HomePage> {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return new Stack(
-      children: <Widget>[ 
+      children: <Widget>[
         new Column(
           children: <Widget>[
-          new DayButton(),
-             new Expanded(
-              child:  new Material(
+            new DayButton(),
+            new Expanded(
+              child: new Material(
                 color: Colors.greenAccent,
-                  child: new InkWell(
-                    onTap: () {Navigator.of(context).pushNamed("/TuesdayPage");},
-                    child: new Center(
-                      child: new Container(
-                        child: new Text("Tuesday", style: new TextStyle(color: Colors.white, fontSize: 55.0, fontWeight: FontWeight.bold),),
+                child: new InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/TuesdayPage");
+                  },
+                  child: new Center(
+                    child: new Container(
+                      child: new Text(
+                        "Tuesday",
+                        style: new TextStyle(
+                            color: Colors.white,
+                            fontSize: 55.0,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-             new Expanded(
-              child:  new Material(
-                color: Colors.yellowAccent,
-                  child: new InkWell(
-                    onTap: () {Navigator.of(context).pushNamed("/WednesdayPage");},
-                    child: new Center(
-                      child: new Container(
-                        child: new Text("Wednesday", style: new TextStyle(color: Colors.white, fontSize: 55.0, fontWeight: FontWeight.bold),),
+            new Expanded(
+              child: new Material(
+                color: Colors.yellow,
+                child: new InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/WednesdayPage");
+                  },
+                  child: new Center(
+                    child: new Container(
+                      child: new Text(
+                        "Wednesday",
+                        style: new TextStyle(
+                            color: Colors.white,
+                            fontSize: 55.0,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-             new Expanded(
-              child:  new Material(
+            new Expanded(
+              child: new Material(
                 color: Colors.orangeAccent,
-                  child: new InkWell(
-                    onTap: () {Navigator.of(context).pushNamed("/ThursdayPage");},
-                    child: new Center(
-                      child: new Container(
-                        child: new Text("Thursday", style: new TextStyle(color: Colors.white, fontSize: 55.0, fontWeight: FontWeight.bold),),
+                child: new InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/ThursdayPage");
+                  },
+                  child: new Center(
+                    child: new Container(
+                      child: new Text(
+                        "Thursday",
+                        style: new TextStyle(
+                            color: Colors.white,
+                            fontSize: 55.0,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-             new Expanded(
-              child:  new Material(
+            new Expanded(
+              child: new Material(
                 color: Colors.redAccent,
-                  child: new InkWell(
-                    onTap: () {Navigator.of(context).pushNamed("/FridayPage");},
-                    child: new Center(
-                      child: new Container(
-                        child: new Text("Friday", style: new TextStyle(color: Colors.white, fontSize: 55.0, fontWeight: FontWeight.bold),),
+                child: new InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/FridayPage");
+                  },
+                  child: new Center(
+                    child: new Container(
+                      child: new Text(
+                        "Friday",
+                        style: new TextStyle(
+                            color: Colors.white,
+                            fontSize: 55.0,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-          
           ],
         ),
       ],
