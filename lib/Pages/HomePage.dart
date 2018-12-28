@@ -1,41 +1,44 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  State createState() => new HomePageState();
-}
+class HomePage extends StatelessWidget {
+  List<Tab> get myTabs => <Tab>[
+        Tab(text: "Monday"),
+        Tab(text: "Tuesday"),
+        Tab(text: "Wednesday"),
+        Tab(text: "Thursday"),
+        Tab(text: "Friday")
+      ];
 
-class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Stack(
-      children: <Widget>[
-        new Column(
-          children: <Widget>[
-            new Expanded(
-              child: new Material(
-                color: Colors.blueAccent,
-                child: new InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed("/MondayPage");
-                  },
-                  child: new Center(
-                    child: new Container(
-                      child: new Text(
-                        "Monday",
-                        style: new TextStyle(
-                            color: Colors.white,
-                            fontSize: 55.0,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                ),
+    return DefaultTabController(
+      length: myTabs.length,
+      child: Scaffold(
+        appBar: AppBar(
+          actions: <Widget>[
+            Align(
+              alignment: Alignment.bottomRight,
+              child: new IconButton(
+                icon: new Icon(Icons.add),
+                iconSize: 30.0,
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/EditingPage");
+                },
               ),
             ),
           ],
+          bottom: TabBar(
+            isScrollable: true,
+            tabs: myTabs,
+          ),
+          title: Text("Timetable"),
         ),
-      ],
+        body: TabBarView(
+          children: myTabs.map((Tab tab) {
+            return Center(child: Text(tab.text));
+          }).toList(),
+        ),
+      ),
     );
   }
 }
