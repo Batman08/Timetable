@@ -14,7 +14,7 @@ class MondayPage extends StatelessWidget {
               icon: new Icon(Icons.settings),
               iconSize: 30.0,
               onPressed: () {
-                Navigator.of(context).pushNamed("/MondayEditingPage");
+                Navigator.of(context).pushNamed("/MondayEditingPages");
               },
             ),
           ),
