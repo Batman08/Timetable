@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_colorpicker/material_picker.dart';
 
-class TextFields extends StatefulWidget {
+class EditingPage extends StatefulWidget {
   @override
-  State createState() => new TextFieldState();
+  State createState() => new EditingPageState();
 }
 
-class TextFieldState extends State<TextFields> {
+class EditingPageState extends State<EditingPage> {
   Color currentColor = Color(0xff443a49);
 
   ValueChanged<Color> onColorChanged;
@@ -33,26 +33,68 @@ class TextFieldState extends State<TextFields> {
               children: <Widget>[
                 titleField(context),
                 descriptionField(context),
-                subjectColor(context),
-                new Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  verticalDirection: VerticalDirection.up,
-                  children: <Widget>[
-                    new RaisedButton(
-                      child: Text("Cancel"),
-                      onPressed: () {
-                        Navigator.pop(context); //need to separate method
-                      },
-                    )
-                  ],
-                )
+                subjectColorButton(context),
+                cancelButtonPadding(context),
+                saveButtonPadding(context)
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Padding cancelButtonPadding(BuildContext context) {
+    return Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          //verticalDirection: VerticalDirection.down,
+          children: <Widget>[cancelRaisedButton(context)],
+        )
+        );
+  }
+
+  SizedBox cancelRaisedButton(BuildContext context) {
+    return new SizedBox(
+        width: 100.0,
+        height: 50.0,
+        child: new RaisedButton(
+          child: Text(
+            "Cancel",
+            style: new TextStyle(fontSize: 20.0),
+          ),
+          onPressed: () {
+            Navigator.pop(context); //need to separate method
+          },
+        ));
+  }
+
+  Padding saveButtonPadding(BuildContext context) {
+    return Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          //verticalDirection: VerticalDirection.down,
+          children: <Widget>[saveRaisedButton(context)],
+        ));
+  }
+
+  SizedBox saveRaisedButton(BuildContext context) {
+    return new SizedBox(
+        width: 100.0,
+        height: 50.0,
+        child: new RaisedButton(
+          child: Text(
+            "Save",
+            style: new TextStyle(fontSize: 20.0),
+          ),
+          onPressed: () {
+            Navigator.pop(context); //need to separate method
+          },
+        ));
   }
 
   TextField titleField(BuildContext context) {
@@ -79,7 +121,7 @@ class TextFieldState extends State<TextFields> {
     );
   }
 
-  ButtonTheme subjectColor(BuildContext context) {
+  ButtonTheme subjectColorButton(BuildContext context) {
     return new ButtonTheme(
         minWidth: 200.0,
         height: 70.0,
@@ -94,22 +136,26 @@ class TextFieldState extends State<TextFields> {
             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return AlertDialog(
-                  titlePadding: EdgeInsets.all(8.0),
-                  contentPadding: EdgeInsets.all(8.0),
-                  content: SingleChildScrollView(
-                    child: ColorPicker(
-                      pickerColor: currentColor,
-                      onColorChanged: changeSimpleColor,
-                      colorPickerWidth: 1000.0,
-                      pickerAreaHeightPercent: 0.7,
-                      enableAlpha: true,
-                    ),
-                  ),
-                );
+                return colorPalette();
               },
             );
           },
         ));
+  }
+
+  AlertDialog colorPalette() {
+    return AlertDialog(
+      titlePadding: EdgeInsets.all(8.0),
+      contentPadding: EdgeInsets.all(8.0),
+      content: SingleChildScrollView(
+        child: ColorPicker(
+          pickerColor: currentColor,
+          onColorChanged: changeSimpleColor,
+          colorPickerWidth: 1000.0,
+          pickerAreaHeightPercent: 0.7,
+          enableAlpha: true,
+        ),
+      ),
+    );
   }
 }

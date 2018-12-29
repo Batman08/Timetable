@@ -13,6 +13,6 @@ void main() {
          "/HomePage": (BuildContext context) => new HomePage(),
 
         //Editing Page
-        "/EditingPage": (BuildContext context) => new TextFields(),
+        "/EditingPage": (BuildContext context) => new EditingPage(),
       }));
 }
