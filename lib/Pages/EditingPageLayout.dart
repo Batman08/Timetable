@@ -34,8 +34,12 @@ class EditingPageState extends State<EditingPage> {
                 titleField(context),
                 descriptionField(context),
                 subjectColorButton(context),
-                cancelButtonPadding(context),
-                saveButtonPadding(context)
+                new Row(
+                  children: <Widget>[
+                    cancelButtonPadding(context),
+                    saveButtonPadding(context)
+                  ],
+                ),
               ],
             ),
           ),
@@ -46,14 +50,10 @@ class EditingPageState extends State<EditingPage> {
 
   Padding cancelButtonPadding(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          //verticalDirection: VerticalDirection.down,
+        padding: EdgeInsets.all(50.0),
+        child: Row(
           children: <Widget>[cancelRaisedButton(context)],
-        )
-        );
+        ));
   }
 
   SizedBox cancelRaisedButton(BuildContext context) {
@@ -73,11 +73,8 @@ class EditingPageState extends State<EditingPage> {
 
   Padding saveButtonPadding(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          //verticalDirection: VerticalDirection.down,
+        padding: EdgeInsets.all(50),
+        child: Row(
           children: <Widget>[saveRaisedButton(context)],
         ));
   }
