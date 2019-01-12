@@ -6,16 +6,19 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_colorpicker/material_picker.dart';
 
-class Home extends StatefulWidget {
+class EditingPage extends StatefulWidget {
   final Storage storage;
 
-  Home({Key key, @required this.storage}) : super(key: key);
+  EditingPage({Key key, @required this.storage}) : super(key: key);
 
   @override
-  HomeState createState() => HomeState();
+  EditingPageState createState() => EditingPageState();
 }
 
-class HomeState extends State<Home> {
+ TextEditingController titleControllers;
+  TextEditingController descriptionControllers;
+
+class EditingPageState extends State<EditingPage> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
@@ -34,7 +37,8 @@ class HomeState extends State<Home> {
 
   Future<File> writeData() async {
     setState(() {
-      state = state + "/n" + titleController.text +"/n"+ descriptionController.text;
+      state = state + "" + titleController.text +""+ descriptionController.text;
+      // state = state + "----------- " + titleController.text +", "+ descriptionController.text;
       // titleController.text = '';
       //state = descriptionController.text;
       // titleController.text = '';
@@ -50,7 +54,8 @@ class HomeState extends State<Home> {
     });
   }
 
-  Color currentColor = Color(0xff443a49);
+//  Color currentColor = Color(0xff42C0FB);
+  Color currentColor = Colors.blueAccent;
 
   ValueChanged<Color> onColorChanged;
 

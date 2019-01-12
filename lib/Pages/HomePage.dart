@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> {
   List<Tab> get myTabs => <Tab>[
         Tab(text: "Monday"),
         Tab(text: "Tuesday"),
@@ -9,12 +16,20 @@ class HomePage extends StatelessWidget {
         Tab(text: "Friday")
       ];
 
+  TabController tabController;
+
+//  @override
+//   void initState() {
+//     tabController = new TabController(length: myTabs.length, vsync: null);
+//   }  
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.black,
           actions: <Widget>[
             Align(
               alignment: Alignment.bottomRight,
@@ -28,14 +43,16 @@ class HomePage extends StatelessWidget {
             ),
           ],
           bottom: TabBar(
+            indicatorColor: Colors.lightBlueAccent,
             isScrollable: true,
             tabs: myTabs,
           ),
           title: Text("Timetable"),
         ),
         body: TabBarView(
+          // controller: ,
           children: myTabs.map((Tab tab) {
-            return Center(child: Text(tab.text));
+            return Center(child: Text(/*tab.text*/"data"));
           }).toList(),
         ),
       ),
