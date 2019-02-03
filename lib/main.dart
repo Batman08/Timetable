@@ -6,6 +6,7 @@ import './Pages/EditingV2.dart';
 
 void main() {
   runApp(new MaterialApp(
+      // theme: new ThemeData.light(),
       home: new HomePage(),/* new EditingPage(
         storage: Storage(),
       ),*/

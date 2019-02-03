@@ -16,14 +16,7 @@ class HomePageState extends State<HomePage> {
         Tab(text: "Friday")
       ];
 
-  TabController tabController;
-
-//  @override
-//   void initState() {
-//     tabController = new TabController(length: myTabs.length, vsync: null);
-//   }  
-
-  @override
+   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: myTabs.length,
@@ -36,6 +29,7 @@ class HomePageState extends State<HomePage> {
               child: new IconButton(
                 icon: new Icon(Icons.add),
                 iconSize: 30.0,
+                tooltip: "Add Subject",
                 onPressed: () {
                   Navigator.of(context).pushNamed("/EditingPage");
                 },
@@ -52,7 +46,7 @@ class HomePageState extends State<HomePage> {
         body: TabBarView(
           // controller: ,
           children: myTabs.map((Tab tab) {
-            return Center(child: Text(/*tab.text*/"data"));
+            return Center(child: Text(/*tab.text*/""));
           }).toList(),
         ),
       ),

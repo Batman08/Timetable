@@ -15,9 +15,6 @@ class EditingPage extends StatefulWidget {
   EditingPageState createState() => EditingPageState();
 }
 
- TextEditingController titleControllers;
-  TextEditingController descriptionControllers;
-
 class EditingPageState extends State<EditingPage> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -37,8 +34,11 @@ class EditingPageState extends State<EditingPage> {
 
   Future<File> writeData() async {
     setState(() {
-      state = state + "" + titleController.text +""+ descriptionController.text;
-      // state = state + "----------- " + titleController.text +", "+ descriptionController.text;
+      state = state +
+          "/n" +
+          titleController.text +
+          "/n" +
+          descriptionController.text;
       // titleController.text = '';
       //state = descriptionController.text;
       // titleController.text = '';
@@ -54,7 +54,7 @@ class EditingPageState extends State<EditingPage> {
     });
   }
 
-//  Color currentColor = Color(0xff42C0FB);
+  // Color currentColor = Color(0xff443a49);
   Color currentColor = Colors.blueAccent;
 
   ValueChanged<Color> onColorChanged;
@@ -200,7 +200,10 @@ class EditingPageState extends State<EditingPage> {
         height: 70.0,
         child: RaisedButton(
           elevation: 3.0,
-          //child: Text('Change me'),
+          child: Text(
+            'Choose Colour',
+            style: TextStyle(fontSize: 35.0),
+          ),
           color: currentColor,
           textColor: useWhiteForeground(currentColor)
               ? const Color(0xffffffff)
@@ -232,52 +235,8 @@ class EditingPageState extends State<EditingPage> {
     );
   }
 }
-/* Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Reading and Writing Files'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Text('${state ?? "File is Empty"}'),
-            TextField(
-              controller: controller,
-            ),
-            RaisedButton(
-              onPressed: writeData,
-              child: Text('Write to File'),
-            ),
-            RaisedButton(
-              child: Text("Get DIR path"),
-              onPressed: getAppDirectory,
-            ),
-            FutureBuilder<Directory>(
-              future: _appDocDir,
-              builder:
-                  (BuildContext context, AsyncSnapshot<Directory> snapshot) {
-                Text text = Text('');
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasError) {
-                    text = Text('Error: ${snapshot.error}');
-                  } else if (snapshot.hasData) {
-                    text = Text('Path: ${snapshot.data.path}');
-                  } else {
-                    text = Text('Unavailable');
-                  }
-                }
-                return new Container(
-                  child: text,
-                );
-              },
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}*/
+
+
 
 class Storage {
   Future<String> get localPath async {
