@@ -6,16 +6,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_colorpicker/material_picker.dart';
 
-class EditingPage extends StatefulWidget {
+class EditPage extends StatefulWidget {
   final Storage storage;
 
-  EditingPage({Key key, @required this.storage}) : super(key: key);
+  EditPage({Key key, @required this.storage}) : super(key: key);
 
   @override
-  EditingPageState createState() => EditingPageState();
+  EditPageState createState() => EditPageState();
 }
 
-class EditingPageState extends State<EditingPage> {
+class EditPageState extends State<EditPage> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
 
@@ -235,8 +235,6 @@ class EditingPageState extends State<EditingPage> {
     );
   }
 }
-
-
 
 class Storage {
   Future<String> get localPath async {

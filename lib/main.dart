@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import './Pages/HomePage.dart';
-import './Pages/EditingV2.dart';
+import './Pages/EditPage.dart';
+import './Helpers/StringHelpers.dart';
 
 void main() {
   runApp(new MaterialApp(
-      // theme: new ThemeData.light(),
+      // todo: theme: new ThemeData.light(),
       home: new HomePage(),
-      /* new EditingPage(
-      storage: Storage(),
-       ),*/
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
-        //Main menu Page
-        "/HomePage": (BuildContext context) => new HomePage(),
-        //Editing Page
-        "/EditingPage": (BuildContext context) => new EditingPage(
+        StringHelpers.homePage: (BuildContext context) => new HomePage(),
+        StringHelpers.editPage: (BuildContext context) => new EditPage(
               storage: Storage(),
             ),
       }));
