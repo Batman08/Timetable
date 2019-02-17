@@ -21,28 +21,7 @@ class HomePageState extends State<HomePage> {
     return DefaultTabController(
       length: myTabs.length,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          actions: <Widget>[
-            Align(
-              alignment: Alignment.bottomRight,
-              child: new IconButton(
-                icon: new Icon(Icons.add),
-                iconSize: 30.0,
-                tooltip: "Add Subject",
-                onPressed: () {
-                  Navigator.of(context).pushNamed("/EditingPage");
-                },
-              ),
-            ),
-          ],
-          bottom: TabBar(
-            indicatorColor: Colors.lightBlueAccent,
-            isScrollable: true,
-            tabs: myTabs,
-          ),
-          title: Text("Timetable"),
-        ),
+        appBar: buildAppBar(context),
         body: TabBarView(
           // controller: ,
           children: myTabs.map((Tab tab) {
@@ -52,4 +31,29 @@ class HomePageState extends State<HomePage> {
       ),
     );
   }
+
+   AppBar buildAppBar(BuildContext context) {
+     return AppBar(
+        backgroundColor: Colors.black,
+        actions: <Widget>[
+          Align(
+            alignment: Alignment.bottomRight,
+            child: new IconButton(
+              icon: new Icon(Icons.add),
+              iconSize: 30.0,
+              tooltip: "Add Subject",
+              onPressed: () {
+                Navigator.of(context).pushNamed("/EditingPage");
+              },
+            ),
+          ),
+        ],
+        bottom: TabBar(
+          indicatorColor: Colors.lightBlueAccent,
+          isScrollable: true,
+          tabs: myTabs,
+        ),
+        title: Text("Timetable"),
+      );
+   }
 }
