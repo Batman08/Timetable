@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_colorpicker/material_picker.dart';
+import '../Helpers/StringHelpers.dart';
 
 class EditPage extends StatefulWidget {
   final Storage storage;
@@ -35,14 +36,10 @@ class EditPageState extends State<EditPage> {
   Future<File> writeData() async {
     setState(() {
       state = state +
-          "/n" +
+          "/" +
           titleController.text +
-          "/n" +
+          "--" +
           descriptionController.text;
-      // titleController.text = '';
-      //state = descriptionController.text;
-      // titleController.text = '';
-      // descriptionController.text = '';
     });
 
     return widget.storage.writeData(state);
@@ -78,21 +75,17 @@ class EditPageState extends State<EditPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               verticalDirection: VerticalDirection.down,
               children: <Widget>[
-                // Text('${state ?? "File is Empty"}'),
                 Text(state),
-
                 titleField(context),
                 descriptionField(context),
                 subjectColorButton(context),
-                // RaisedButton(
-                //   onPressed: writeData,
-                //   child: Text('Write to File'),
-                // ),
-                new Row(
-                  children: <Widget>[
-                    cancelButtonPadding(context),
-                    saveButtonPadding(context)
-                  ],
+                new Expanded(
+                  child: new Row(
+                    children: <Widget>[
+                      cancelButtonPadding(context),
+                      saveButtonPadding(context)
+                    ],
+                  ),
                 ),
                 errorCheck(),
               ],
@@ -114,7 +107,7 @@ class EditPageState extends State<EditPage> {
           } else if (snapshot.hasData) {
             text = Text('Path: ${snapshot.data.path}');
           } else {
-            text = Text('Unavailable');
+            text = Text(StringHelpers.editPageSaveFileUnavailable);
           }
         }
         return new Container(
@@ -138,11 +131,11 @@ class EditPageState extends State<EditPage> {
         height: 50.0,
         child: new RaisedButton(
           child: Text(
-            "Cancel",
+            StringHelpers.editPageCancelTask,
             style: new TextStyle(fontSize: 20.0),
           ),
           onPressed: () {
-            Navigator.pop(context); //need to separate method
+            Navigator.pop(context);
           },
         ));
   }
@@ -161,7 +154,7 @@ class EditPageState extends State<EditPage> {
         height: 50.0,
         child: new RaisedButton(
           child: Text(
-            "Save",
+            StringHelpers.editPageSaveTask,
             style: new TextStyle(fontSize: 20.0),
           ),
           onPressed: writeData,
@@ -173,7 +166,7 @@ class EditPageState extends State<EditPage> {
       style: Theme.of(context).textTheme.display3,
       controller: titleController,
       decoration: new InputDecoration(
-          hintText: "Title",
+          hintText: StringHelpers.editPageSubjectTitle,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(0.0)))),
     );
@@ -182,13 +175,11 @@ class EditPageState extends State<EditPage> {
   TextField descriptionField(BuildContext context) {
     return new TextField(
       controller: descriptionController,
-      // style: Theme.of(context).textTheme.display1,
       style: new TextStyle(fontSize: 25.0, height: 1.0, color: Colors.black),
       keyboardType: TextInputType.multiline,
       maxLines: 5,
-
       decoration: new InputDecoration(
-          hintText: "Details",
+          hintText: StringHelpers.editPageSubjectDetails,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.all(Radius.circular(0.0)))),
     );
@@ -201,7 +192,7 @@ class EditPageState extends State<EditPage> {
         child: RaisedButton(
           elevation: 3.0,
           child: Text(
-            'Choose Colour',
+            StringHelpers.editPageSubjectColour,
             style: TextStyle(fontSize: 35.0),
           ),
           color: currentColor,
