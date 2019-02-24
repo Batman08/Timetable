@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Helpers/StringHelpers.dart';
+import '../BusinessObjects/DayEntry.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  List<Tab> get myTabs => <Tab>[
+  List<Tab> get dayTabs => <Tab>[
         Tab(text: StringHelpers.monday),
         Tab(text: StringHelpers.tuesday),
         Tab(text: StringHelpers.wednesday),
@@ -17,24 +18,10 @@ class HomePageState extends State<HomePage> {
         Tab(text: StringHelpers.friday)
       ];
 
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: myTabs.length,
-      child: Scaffold(
-        appBar: buildAppBar(context),
-        body: TabBarView(
-          children: myTabs.map((Tab tab) {
-            return Center(child: Text(/*tab.text*/ ""));
-          }).toList(),
-        ),
-      ),
-    );
-  }
-
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.black,
+      title: Text(StringHelpers.appTitle),
       actions: <Widget>[
         Align(
           alignment: Alignment.bottomRight,
@@ -51,9 +38,27 @@ class HomePageState extends State<HomePage> {
       bottom: TabBar(
         indicatorColor: Colors.lightBlueAccent,
         isScrollable: true,
-        tabs: myTabs,
+        tabs: dayTabs,
       ),
-      title: Text(StringHelpers.appTitle),
+    );
+  }
+
+  TabBarView buildDayContentView() {
+    return TabBarView(
+      children: dayTabs.map((Tab tab) {
+        return Center(child: Text(tab.text));
+      }).toList(),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: dayTabs.length,
+      child: Scaffold(
+        appBar: buildAppBar(context),
+        body: buildDayContentView(),
+      ),
     );
   }
 }
