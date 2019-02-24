@@ -20,8 +20,8 @@ class StringHelpers {
 
   // edit page specific strings
   static const editPageSaveFileUnavailable = 'Unavailable';
-  static const editPageSaveTask = 'Save';
-  static const editPageCancelTask = 'Cancel';
+  static const editPageSave = 'Save';
+  static const editPageCancel = 'Cancel';
   static const editPageSubjectTitle = 'Title';
   static const editPageSubjectDetails = 'Details';
   static const editPageSubjectColour = 'Choose Colour';

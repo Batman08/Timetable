@@ -131,7 +131,7 @@ class EditPageState extends State<EditPage> {
         height: 50.0,
         child: new RaisedButton(
           child: Text(
-            StringHelpers.editPageCancelTask,
+            StringHelpers.editPageCancel,
             style: new TextStyle(fontSize: 20.0),
           ),
           onPressed: () {
@@ -154,7 +154,7 @@ class EditPageState extends State<EditPage> {
         height: 50.0,
         child: new RaisedButton(
           child: Text(
-            StringHelpers.editPageSaveTask,
+            StringHelpers.editPageSave,
             style: new TextStyle(fontSize: 20.0),
           ),
           onPressed: writeData,
