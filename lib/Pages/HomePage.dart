@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Helpers/StringHelpers.dart';
-import '../BusinessObjects/DayEntry.dart';
+import 'package:timetable/DTOs/DayEntry.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,11 +11,11 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   List<Tab> get dayTabs => <Tab>[
-        Tab(text: StringHelpers.monday),
-        Tab(text: StringHelpers.tuesday),
-        Tab(text: StringHelpers.wednesday),
-        Tab(text: StringHelpers.thursday),
-        Tab(text: StringHelpers.friday)
+        Tab(text: DayEntryEnumName[DayEntryEnum.Monday]),
+        Tab(text: DayEntryEnumName[DayEntryEnum.Tuesday]),
+        Tab(text: DayEntryEnumName[DayEntryEnum.Wednesday]),
+        Tab(text: DayEntryEnumName[DayEntryEnum.Thursday]),
+        Tab(text: DayEntryEnumName[DayEntryEnum.Friday]),
       ];
 
   AppBar buildAppBar(BuildContext context) {
